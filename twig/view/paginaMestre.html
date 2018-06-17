@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>{{titulo}}</title>
+</head>
+<body>
+	<nav>
+		<li><a href="index.php?casa">Casa</a></li>
+		<li><a href="index.php?novas">Novas</a></li>
+		<li><a href="index.php?sobre">Sobre</a></li>
+	</nav>
+	{% block conteudo %}
+	{% endblock %}
+	<footer>Tel: {{tel}}</footer>
+	{% block meuScript %}
+	{% endblock %}
+</body>
+</html>

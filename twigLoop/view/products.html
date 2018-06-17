@@ -1,0 +1,20 @@
+{% extends "layout.html" %}
+
+{% block conteudo %}
+<table border="1" style="width: 80%;">
+	<thead>
+		<tr>
+			<td>Código</td>
+			<td>Produto</td>
+		</tr>
+	</thead>
+	<tbody>
+		{% for p in products %}
+		<tr>
+			<td>{{ p.cod }}</td>
+			<td>{{ p.nome | upper }}</td>
+		</tr>
+		{% endfor %}
+	</tbody>
+</table>
+{% endblock %}
