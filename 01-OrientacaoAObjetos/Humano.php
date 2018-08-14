@@ -1,8 +1,17 @@
 <?php
 require_once 'Alimento.php';
 class Humano {
-	private $nome;
-	private $altura;
+	protected $nome;
+	protected $altura;
+	
+	public function morrer(){
+		unset($this);
+	}
+	
+	public function apaixonarSe(Humano $h){
+		echo "Ai.. ai... eu te amo " . $h->getNome() . "<br>";
+		echo "Ai.. ai... eu também te amo ";
+	}
 	
 	public function produzirLeite() {
 		$leite = new Alimento ();
