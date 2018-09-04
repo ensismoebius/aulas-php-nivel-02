@@ -14,6 +14,7 @@ class Loja {
 	 * retorna -1
 	 * @param model\Cliente $c
 	 * @return number
+	 * 
 	 */
 	public function autenticarCliente(model\Cliente $c) {
 		$bd = new \BancoDeDados ();
