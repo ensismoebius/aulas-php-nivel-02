@@ -1,37 +1,24 @@
 <?php
-
-namespace controller;
-
-require_once 'lib/BancoDeDados.php';
-
-use model;
-
+require_once 'lib/vendor/autoload.php';
 class Loja {
+	public function __construct() {
+		
+		// Responsável por carregar os arquivos de template
+		$carregador = new Twig_Loader_Filesystem ( "../view" );
 
-	/**
-	 * Verifica se o cliente existe no banco de dados
-	 * caso ele exista retorna seu código senão
-	 * retorna -1
-	 * @param model\Cliente $c
-	 * @return number
-	 * 
-	 */
-	public function autenticarCliente(model\Cliente $c) {
-		$bd = new \BancoDeDados ();
+		// Combina o template com os dados recebidos
+		// e os exibe
+		$twig = new Twig_Environment ( $carregador );
 
-		if ($bd->abrirConexao ()) {
+		// Dados que quero exibir
+		// (tem que ser um array)
+		$dados = array (
+				'mensagem' => "Olá cliente"
+		);
 
-			$sql = "Select cod from Cliente where login = '{$c->getLogin()}' and senha='{$c->getSenha()}'";
-
-			$bd->executarSQL ( $sql );
-
-			$resultado = $bd->lerResultados ();
-
-			if (count ( $resultado ) > 0) {
-				return $resultado [0] ["cod"];
-			}
-
-			return - 1;
-		}
+		echo $twig->render ( "loja.html", $dados );
 	}
 }
+
+new Loja();
+
