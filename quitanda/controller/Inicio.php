@@ -59,6 +59,13 @@ class Inicio {
 	 *
 	 */
 	public function autenticarCliente(model\Cliente $c) {
+		
+		session_start();
+
+		if(isset($_SESSION["cod"])){
+			return $_SESSION["cod"];
+		}
+		
 		$bd = new \BancoDeDados ();
 
 		if ($bd->abrirConexao ()) {
@@ -70,6 +77,7 @@ class Inicio {
 			$resultado = $bd->lerResultados ();
 
 			if (count ( $resultado ) > 0) {
+				$_SESSION["cod"] = $resultado [0] ["cod"];
 				return $resultado [0] ["cod"];
 			}
 
@@ -77,5 +85,4 @@ class Inicio {
 		}
 	}
 }
-
 new Inicio ();
