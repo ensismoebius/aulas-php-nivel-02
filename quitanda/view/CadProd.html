@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	{% block conteudo %}
+	<h1>{{ mensagem }}</h1>
+	<form action="CadProd.php" method="post">
+		
+		<label for="codLoja">Escolha a loja</label>
+		<select name="codLoja">
+		{% for l in lojas %}
+			<option value="{{ l.cod }}">{{ l.nome | upper }}</option>
+		{% endfor %}
+		</select>
+		<br />
+		<label for="nome">Nome</label>
+		<input type="text" name="nome" />
+		<br />
+		<label for="preco">Preço:</label>
+		<input type="number" name="preco" />
+		<br />
+		<label for="estoque">Estoque</label>
+		<input type="text" name="estoque" />
+	</form>
+	{% endblock %}
+</body>
+</html>
