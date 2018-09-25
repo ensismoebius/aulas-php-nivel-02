@@ -6,9 +6,10 @@ class Cliente {
 	private $cod;
 	private $login;
 	private $senha;
-	private $nome;
+	private $nome; 
+	private $sobrenome;
+	private $arrTelefone;
 	private $email;
-	private $telefone;
 	private $cpf;
 	private $logradouro;
 	private $numeroDaCasa;

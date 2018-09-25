@@ -2,7 +2,6 @@
 namespace model;
 class Produto
 {
-
     private $cod;
 
     private $tipo;
@@ -14,8 +13,28 @@ class Produto
     private $qtdeEmEstoque;
     
     private $nome;
+    
+    private $tipoDeUnidade;
 
-    /**
+    private $codLoja;
+
+	public function getTipoDeUnidade() {
+		return $this->tipoDeUnidade;
+	}
+
+	public function getCodLoja() {
+		return $this->codLoja;
+	}
+
+	public function setTipoDeUnidade($tipoDeUnidade) {
+		$this->tipoDeUnidade = $tipoDeUnidade;
+	}
+
+	public function setCodLoja($codLoja) {
+		$this->codLoja = $codLoja;
+	}
+
+	/**
      * @return mixed
      */
     public function getNome()
