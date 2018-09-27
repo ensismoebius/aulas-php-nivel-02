@@ -8,7 +8,6 @@
 	{% block conteudo %}
 	<h1>{{ mensagem }}</h1>
 	<form action="CadProd.php" method="post">
-		
 		<label for="codLoja">Escolha a loja</label>
 		<select name="codLoja">
 		{% for l in lojas %}
@@ -20,11 +19,68 @@
 		<input type="text" name="nome" />
 		<br />
 		<label for="preco">Preço:</label>
-		<input type="number" name="preco" />
+		<input type="text" name="preco" />
 		<br />
 		<label for="estoque">Estoque</label>
-		<input type="text" name="estoque" />
+		<input type="number" name="estoque" />
+		<br />
+		<label for="tipo">Tipo de produto</label>
+		<select name="tipo">
+		{% for t in tipos %}
+			<option value="{{ t.cod }}">{{ t.nome | upper }}</option>
+		{% endfor %}
+		</select>
+		
+		<br />
+		<label for="tipo">Tipo de unidade</label>
+		<select name="tipo">
+		{% for u in unidades %}
+			<option value="{{ u.cod }}">{{ u.nome | upper }}</option>
+		{% endfor %}
+		</select>
+		
+		<br />
+		<label for="validade">Validade</label>
+		<input type="date" name="validade" />
+		<br />
+		<input type="submit" value="Enviar" />
 	</form>
+	
+	<table>
+		<thead>
+			<th>
+				<td>Cod</td>
+				<td>Loja</td>
+				<td>Nome</td>
+				<td>Preço</td>
+				<td>Qtde</td>
+				<td>Tipo de produto</td>
+				<td>Tipo unidade</td>
+				<td>Validade</td>
+			</th>
+		</thead>
+		<tbody>
+			{% for p in Produtos %}
+			<tr>
+				<td>{{ p.cod }}</td>
+				<td>{{ p.loja }}</td>
+				<td>{{ p.nome }}</td>
+				<td>{{ p.preco }}</td>
+				<td>{{ p.qtdeEmEstoque }}</td>
+				<td>{{ p.tipo }}</td>
+				<td>{{ p.tipoDeUnidade }}</td>
+				<td>{{ p.validade }}</td>
+			</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+	
+	
+	
+	
+	
+	
+	
 	{% endblock %}
 </body>
 </html>
