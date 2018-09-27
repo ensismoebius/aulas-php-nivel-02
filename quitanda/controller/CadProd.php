@@ -22,7 +22,7 @@ class CadProd {
 		// Dados que quero exibir
 		// (tem que ser um array)
 		$dados = array ();
-		$dados ["lojas"] = $this->consultaLojas();
+		$dados ["lojas"] = $this->consultaLojas ();
 
 		echo $twig->render ( "CadProd.html", $dados );
 	}
@@ -44,7 +44,7 @@ class CadProd {
 			$lojas [] = $l1;
 		}
 
-		$bd->fecharConexao();
+		$bd->fecharConexao ();
 		return $lojas;
 	}
 }
