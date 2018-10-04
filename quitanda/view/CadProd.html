@@ -32,8 +32,8 @@
 		</select>
 		
 		<br />
-		<label for="tipo">Tipo de unidade</label>
-		<select name="tipo">
+		<label for="tipoUnidade">Tipo de unidade</label>
+		<select name="tipoUnidade">
 		{% for u in unidades %}
 			<option value="{{ u.cod }}">{{ u.nome | upper }}</option>
 		{% endfor %}
@@ -60,7 +60,7 @@
 			</th>
 		</thead>
 		<tbody>
-			{% for p in Produtos %}
+			{% for p in produtos %}
 			<tr>
 				<td>{{ p.cod }}</td>
 				<td>{{ p.loja }}</td>
@@ -74,13 +74,6 @@
 			{% endfor %}
 		</tbody>
 	</table>
-	
-	
-	
-	
-	
-	
-	
 	{% endblock %}
 </body>
 </html>
