@@ -17,6 +17,7 @@ use model\Produto;
 class CadProd {
 
 	/**
+	 *
 	 * @var \BancoDeDados
 	 */
 	private $bd;
@@ -26,11 +27,11 @@ class CadProd {
 		$this->bd->abrirConexao ();
 
 		// Responsável por carregar os arquivos de template
-		$carregador = new \Twig_Loader_Filesystem ( "../view" );
+		$carregador = new \Twig\Loader\FilesystemLoader ( "../view" );
 
 		// Combina o template com os dados recebidos
 		// e os exibe
-		$twig = new \Twig_Environment ( $carregador );
+		$twig = new \Twig\Environment ( $carregador );
 
 		if ($this->foiEnviado ()) {
 			$this->salvaProduto ();
