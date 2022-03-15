@@ -3,16 +3,14 @@ class BancoDeDados {
 
 	/**
 	 * Guarda a conexão com o banco de dados
-	 * @var PDO
 	 */
-	private $conexao;
+	private PDO $conexao;
 
 	/**
 	 * Guarda os resultados que vem do
 	 * banco de dados
-	 * @var PDOStatement
 	 */
-	private $resultado;
+	private PDOStatement $resultado;
 
 	/**
 	 * Retorna um array com os dados pedidos
@@ -60,7 +58,7 @@ class BancoDeDados {
 					PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8"
 			);
 
-			$this->conexao = new PDO ( $end, "root", "1234", $conf );
+			$this->conexao = new PDO ( $end, "andre", "1234", $conf );
 			return true;
 		} catch ( Exception $e ) {
 			echo "Falha ao conectar com o banco de dados";
