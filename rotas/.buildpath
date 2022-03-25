@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<buildpath>
+	<buildpathentry kind="con" path="org.eclipse.php.core.LANGUAGE"/>
+	<buildpathentry kind="src" path="src/Lib/vendor/coffeecode/router/src">
+		<attributes>
+			<attribute name="composer" value="vendor"/>
+		</attributes>
+	</buildpathentry>
+	<buildpathentry kind="src" path="src/Lib/vendor/composer">
+		<attributes>
+			<attribute name="composer" value="vendor"/>
+		</attributes>
+	</buildpathentry>
+	<buildpathentry kind="src" path="src/Lib/vendor/symfony/polyfill-ctype">
+		<attributes>
+			<attribute name="composer" value="vendor"/>
+		</attributes>
+	</buildpathentry>
+	<buildpathentry kind="src" path="src/Lib/vendor/symfony/polyfill-mbstring">
+		<attributes>
+			<attribute name="composer" value="vendor"/>
+		</attributes>
+	</buildpathentry>
+	<buildpathentry excluding="Lib/vendor/coffeecode/router/src/|Lib/vendor/composer/|Lib/vendor/symfony/polyfill-ctype/|Lib/vendor/symfony/polyfill-mbstring/|Lib/vendor/twig/twig/src/" kind="src" path="src">
+		<attributes>
+			<attribute name="composer" value="source"/>
+		</attributes>
+	</buildpathentry>
+	<buildpathentry kind="src" path="src/Lib/vendor/twig/twig/src">
+		<attributes>
+			<attribute name="composer" value="vendor"/>
+		</attributes>
+	</buildpathentry>
+</buildpath>
