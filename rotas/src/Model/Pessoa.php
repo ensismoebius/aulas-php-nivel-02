@@ -1,48 +1,30 @@
 <?php
-
 namespace Src\Model;
 
-/**
- *
- * @author ensismoebius
- *        
- */
-class Pessoa {
+class Pessoa
+{
 
-	private string $nome;
+    private string $nome;
 
-	private string $sobrenome;
+    private string $sobrenome;
 
-	/**
-	 *
-	 * @return mixed
-	 */
-	public function getNome() {
-		return $this->nome;
-	}
+    public function getNome()
+    {
+        return $this->nome;
+    }
 
-	/**
-	 *
-	 * @return mixed
-	 */
-	public function getSobrenome() {
-		return $this->sobrenome;
-	}
+    public function getSobrenome()
+    {
+        return $this->sobrenome;
+    }
 
-	/**
-	 *
-	 * @param mixed $nome
-	 */
-	public function setNome($nome) {
-		$this->nome = $nome;
-	}
+    public function setNome($nome)
+    {
+        $this->nome = $nome;
+    }
 
-	/**
-	 *
-	 * @param mixed $sobrenome
-	 */
-	public function setSobrenome($sobrenome) {
-		$this->sobrenome = $sobrenome;
-	}
+    public function setSobrenome($sobrenome)
+    {
+        $this->sobrenome = $sobrenome;
+    }
 }
-

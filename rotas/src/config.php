@@ -1,4 +1,4 @@
 <?php
-
 namespace Src;
-define("BASE_URL", "http://localhost/rotas/");
+
+define("URL_BASE", "http://localhost/rr");

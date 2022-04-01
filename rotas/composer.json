@@ -1,26 +1,32 @@
 {
 	"name" : "ensismoebius/rotas",
-	"description" : "Projeto com rotas e outras funcionalidades",
-	"autoload" : {
-		"psr-4" : {
+	"description": "Demostração de rota e outras funcionalidades",
+	"autoload": {
+		"psr-4": {
 			"Src\\" : "src"
 		},
-		"files" : [
+		"files": [
 			"src/config.php"
 		]
 	},
-	"authors" : [{
-			"name" : "André Furlan",
-			"email" : "ensismoebius@gmail.com",
-			"homepage" : "https://github.com/ensismoebius",
-			"role" : "Developer"
+	"authors": [
+		{
+			"name": "André Furlan",
+			"email": "ensismoebius@gmail.com",
+			"homepage": "https://github.com/ensismoebius",
+			"role": "Developer"
 		}
 	],
-	"require" : {
+	"require": {
 		"twig/twig" : "~3.3",
 		"coffeecode/router" : "~1.0"
 	},
-	"config" : {
-		"vendor-dir" : "src/Lib/vendor"
+	"config": {
+		"vendor-dir": "src/Lib/vendor"
 	}
+	
 }
+
+
+
+
