@@ -1,5 +1,11 @@
-*/lib/
+*.lock
 *.exe
 */bin/
-*.phar
 *.lock
+*/Lib/vendor
+*/lib/vendor
+/lib/vendor
+/rotas/src/Lib
+/rotas/src/Lib
+twig/lib/
+twigLoop/lib/
