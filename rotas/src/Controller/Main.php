@@ -8,7 +8,7 @@ namespace Src\Controller;
 class Main
 {
 
-    public static function inicio(array $data)
+    public function inicio(array $data)
     {
         // use twig here
         echo "<h1>Pagina inicial</h1>";
