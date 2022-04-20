@@ -1,0 +1,27 @@
+{
+    "name" : "ensismoebius/rotas",
+    "description": "Demostração de rota e outras funcionalidades",
+    "authors": [
+        {
+            "name": "Andre Furlan",
+            "email": "ensismoebius@gmail.com",
+            "homepage": "https://github.com/ensismoebius",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "twig/twig" : "~3.3",
+        "coffeecode/router" : "~1.0"
+    },
+    "config": {
+        "vendor-dir": "src/Lib/vendor"
+    },
+    "autoload": {
+        "psr-4": {
+            "Src\\" : "src"
+        },
+        "files": [
+            "src/config.php"
+        ]
+    }
+}
