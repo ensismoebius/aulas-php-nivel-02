@@ -1,6 +1,6 @@
 <?php
 
-require_once './src/Lib/vendor/autoload.php';
+require_once './Src/Lib/vendor/autoload.php';
 
 // Cria o roteador
 $roteador = new CoffeeCode\Router\Router(URL);

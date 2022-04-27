@@ -14,14 +14,14 @@
         "coffeecode/router" : "~1.0"
     },
     "config": {
-        "vendor-dir": "src/Lib/vendor"
+        "vendor-dir": "Src/Lib/vendor"
     },
     "autoload": {
         "psr-4": {
-            "Src\\" : "src"
+            "Src\\" : "Src"
         },
         "files": [
-            "src/config.php"
+            "Src/Config.php"
         ]
     }
 }

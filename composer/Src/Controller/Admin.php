@@ -19,7 +19,7 @@ class Admin
         // Integraçao com o Twig
         // Entre outros
         // Abre o diretorio onde se encontram o templates
-        $this->carregador = new \Twig\Loader\FilesystemLoader("./src/View");
+        $this->carregador = new \Twig\Loader\FilesystemLoader("./Src/View");
 
         // Combina os dados com o template
         $this->ambiente = new \Twig\Environment($this->carregador);
