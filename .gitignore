@@ -9,3 +9,6 @@
 /rotas/src/Lib
 twig/lib/
 twigLoop/lib/
+/aula/Src/lib/vendor/
+/aula/nbproject/private/
+*/vendor/*

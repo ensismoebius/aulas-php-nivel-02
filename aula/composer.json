@@ -1,0 +1,29 @@
+{
+    "name": "etec-philadelpho/aula",
+    "description": "Um MVC básico",
+    "authors": [
+        {
+            "name": "André Furlan",
+            "email": "ensismoebius@gmail.com"
+        },
+        {
+            "name": "Uga da Silva Costa",
+            "email": "caverna@pedra.com"
+        }
+    ],
+    "require": {
+        "coffeecode/router": "~1.0",
+        "twig/twig": "^3.7"
+    },
+    "autoload": {
+        "psr-4": {
+            "Src\\": "Src"
+        },
+        "files": [
+            "Src/Config.php"
+        ]
+    },
+    "config": {
+        "vendor-dir": "Src/lib/vendor"
+    }
+}
