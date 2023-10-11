@@ -14,7 +14,7 @@ $roteador->group(null);
 // Rota dinamica vem primeiro
 $roteador->get("/{nome}", "Main:index");
 // Rota estatica
-$roteador->get("/", "Main:index");
+$roteador->get("/", "Principal:index");
 
 // Rota para o Blog
 $roteador->group("blog");
