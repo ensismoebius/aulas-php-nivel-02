@@ -25,6 +25,7 @@ class Principal {
 
     public function index($dados) {
         $dados["titulo"] = "Pagina inicial";
+        $dados["imgDir"] = IMAGE_DIR;
         echo $this->ambiente->render('index.html', $dados);
     }
 }
