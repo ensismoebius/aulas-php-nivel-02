@@ -24,6 +24,7 @@ class Principal {
     }
 
     public function index($dados) {
-        echo "Página principal";
+        $dados["titulo"] = "Pagina inicial";
+        echo $this->ambiente->render('index.html', $dados);
     }
 }

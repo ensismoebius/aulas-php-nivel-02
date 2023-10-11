@@ -12,24 +12,9 @@ $roteador->namespace("Src\Controller");
 // Rota principal
 $roteador->group(null);
 // Rota dinamica vem primeiro
-$roteador->get("/{nome}", "Main:index");
+$roteador->get("/{nome}", "Principal:index");
 // Rota estatica
 $roteador->get("/", "Principal:index");
-
-// Rota para o Blog
-$roteador->group("blog");
-// Rota dinamica vem primeiro
-$roteador->get("/{topico}/{pagina}", "Main:blog");
-// Rota estatica
-$roteador->get("/", "Main:blog");
-
-// Rota para o Adm
-$roteador->group("resetarSenha");
-// Rota dinamica vem primeiro
-$roteador->get("/{login}/{senha}", "Admin:resetarSenha");
-// Rota estatica
-$roteador->post("/", "Admin:salvaSenha");
-$roteador->get("/", "Admin:resetarSenha");
 
 $roteador->dispatch();
 
