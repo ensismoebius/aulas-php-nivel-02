@@ -24,8 +24,11 @@ class Principal {
     }
 
     public function index($dados) {
+        
+        // Adiciona mais dados aos já existentes
         $dados["titulo"] = "Pagina inicial";
         $dados["imgDir"] = IMAGE_DIR;
+        
         echo $this->ambiente->render('index.html', $dados);
     }
 }
