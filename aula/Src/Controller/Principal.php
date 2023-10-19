@@ -37,7 +37,7 @@ class Principal {
         $sql = "select * from Cliente";
 
         if (isset($dados['nome'])) {
-            $sql = $sql = "where like %${$dados['nome']}%";
+            $sql = $sql . " where nome like '%" . $dados['nome'] . "%'";
         }
 
         $bd = new \Src\lib\BancoDeDados();

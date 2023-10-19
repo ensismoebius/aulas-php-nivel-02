@@ -16,7 +16,7 @@ $roteador->get("/{nome}", "Principal:index");
 // Rota estatica
 $roteador->get("/", "Principal:index");
 
-// Rota principal
+// Rota cliente
 $roteador->group("clientes");
 // Rota dinamica vem primeiro
 $roteador->get("/{nome}", "Principal:mostraClientes");
