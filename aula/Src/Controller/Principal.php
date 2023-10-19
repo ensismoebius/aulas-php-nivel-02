@@ -24,11 +24,32 @@ class Principal {
     }
 
     public function index($dados) {
-        
+
         // Adiciona mais dados aos já existentes
         $dados["titulo"] = "Pagina inicial";
         $dados["imgDir"] = IMAGE_DIR;
-        
+
         echo $this->ambiente->render('index.html', $dados);
+    }
+
+    public function mostraClientes(array $dados) {
+
+        $sql = "select * from Cliente";
+
+        if (isset($dados['nome'])) {
+            $sql = $sql = "where like %${$dados['nome']}%";
+        }
+
+        $bd = new \Src\lib\BancoDeDados();
+
+        $bd->abrirConexao(\BD_ENDERECO, \BD_USUARIE, \BD_SENHA);
+
+        if ($bd->executaSql($sql)) {
+            $dados["clientes"] = $bd->lerResultado(\Src\Model\Cliente::class);
+        }else{
+            $dados["erro"] = "Falha ao consultar o banco de dados";
+        }
+
+        echo $this->ambiente->render('Clientes.html', $dados);
     }
 }
