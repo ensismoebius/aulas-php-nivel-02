@@ -1,35 +1,17 @@
 <?php
+require_once './Src/Lib/vendor/autoload.php';
 
-// Carrega as bibliotecas do php automaticamente
-require './Src/lib/vendor/autoload.php';
-
-// Cria o roteador
 $roteador = new CoffeeCode\Router\Router(URL);
 
-// Informa o diretorio onde os controladores se encontram
-$roteador->namespace("Src\Controller");
+$roteador->namespace("Etec\Aula\Controller");
 
-// Rota principal
 $roteador->group(null);
-// Rota dinamica vem primeiro
-$roteador->get("/{nome}", "Principal:index");
-// Rota estatica
-$roteador->get("/", "Principal:index");
-
-// Rota cliente
-$roteador->group("clientes");
-// Rota dinamica vem primeiro
-$roteador->get("/{nome}", "Principal:mostraClientes");
-// Rota estatica
-$roteador->get("/", "Principal:mostraClientes");
+$roteador->get("/", "Principal:paginaInicial");
+$roteador->get("/sobre", "Principal:sobre");
 
 $roteador->dispatch();
 
-switch ($roteador->error()) {
-    case 404:
-        echo "Página não encontrada";
-        break;
-    case 501:
-        echo "Erro de código";
-        break;
+
+if (!is_null($roteador->error())) {
+    $roteador->redirect("/error/{$roteador->error()}");
 }
