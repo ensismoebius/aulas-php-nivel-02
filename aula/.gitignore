@@ -1,0 +1,39 @@
+# Composer dependencies
+/Src/Lib/vendor
+
+# Composer's own files
+composer.lock
+
+# Commonly ignored file formats & paths
+
+# OS and IDE specific files
+.DS_Store          # macOS filesystem file
+Thumbs.db          # Windows image file cache
+*.sublime*         # Sublime Text files
+.idea/             # IntelliJ IDE (e.g., PhpStorm)
+.vscode/           # Visual Studio Code folders
+nbproject/         # NetBeans project files
+*.bak              # Backup files
+
+# Logs and databases
+*.log
+*.sql
+*.sqlite
+
+# Exported files
+*.csv
+*.json
+
+# Node modules (if using Node.js in the project)
+/node_modules/
+
+# Environment specific files
+/.env
+/.env.local
+
+# Build outputs
+/build/
+/dist/
+
+# Caches
+*.cache

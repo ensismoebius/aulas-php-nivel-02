@@ -1,17 +1,19 @@
 <?php
-require_once './Src/Lib/vendor/autoload.php';
+require "Src/Lib/vendor/autoload.php";
 
+// Cria o roteador
 $roteador = new CoffeeCode\Router\Router(URL);
 
+// Informa o diretorio onde os controladores se encontram
 $roteador->namespace("Etec\Aula\Controller");
 
+// Grupo raiz
 $roteador->group(null);
-$roteador->get("/", "Principal:paginaInicial");
-$roteador->get("/sobre", "Principal:sobre");
+
+// Rota principal
+$roteador->get("/", "Principal:paginaPrincipal");
+
+// Rota sobre
+$roteador->get("/sobre","Principal:sobre");
 
 $roteador->dispatch();
-
-
-if (!is_null($roteador->error())) {
-    $roteador->redirect("/error/{$roteador->error()}");
-}
