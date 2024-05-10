@@ -6,7 +6,7 @@ class Sanitizer
 {
     public static function sanitizeAll(array &$data): void
     {
-        foreach ($data as $key => $value) {
+        foreach ($data as $key => &$value) {
             $value = self::sanitizeString($value);
         }
     }
