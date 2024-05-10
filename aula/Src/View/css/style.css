@@ -17,9 +17,6 @@ header, footer {
     padding: 1rem;
 }
 
-
-
-
 a {
     text-decoration: none;
     color: white;
@@ -30,7 +27,7 @@ a {
  a:hover, a:focus {
     color: black;
     background-color: white;
-    padding: 2px;
+    letter-spacing: 0.05em;
     border-radius: 5px;
 }
 
