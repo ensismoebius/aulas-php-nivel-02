@@ -8,53 +8,8 @@ namespace Etec\Aula\Controller;
  * Aqui na classe principal agrupamos todas as páginas
  * principais: index, sobre, contato, etc.
  */
-class Admin
+class Admin extends BaseController
 {
-    /**
-     * Guarda o objeto responsável por juntar os dados
-     * fornecidos com template
-     *
-     * @var \Twig\Environment
-     */
-    private static \Twig\Environment $twig;
-
-
-    /**
-     * Vamos usar banco de dados nessa página
-     * precisamos instanciar esse classe que
-     * seu professor dedicado criou
-     *
-     * @var \Etec\Aula\BancoDeDados
-     */
-    private static \Etec\Aula\Lib\BancoDeDados $bd;
-
-    /**
-     * Método construtor
-     */
-    public function __construct()
-    {
-        // Instancia o objeto que vai carregar os templates
-        $loader = new \Twig\Loader\FilesystemLoader("Src/View");
-
-        // Instancia o objeto responsável por juntar os dados
-        // fornecidos com template
-        self::$twig = new \Twig\Environment($loader);
-
-        // Criando o objeto do banco de dados
-        self::$bd = new \Etec\Aula\Lib\BancoDeDados();
-
-        // Adiciona a extensão para carregar imagens, scripts e css.
-        // Foi seu lindo professor que criou essa extensão
-        // para facilitar a vida de seus aluninhes
-        self::$twig->addExtension(
-            new \Etec\Aula\Lib\AssetExtension(
-                URL . "/Src/View/images",
-                URL . "/Src/View/js",
-                URL . "/Src/View/css"
-            )
-        );
-    }
-
     /**
      * Exibe formulário de criação de postagem
      *
@@ -63,11 +18,45 @@ class Admin
      */
     public function adicionarPostagem(array $dadosRecebidos): void
     {
+        // Guarda os dados que vão pro template
+        $dadosDoTemplate = array();
+
+        self::$bd->abrirConexao(BD_ENDERECO, BD_USUARIE, BD_SENHA);
+
+        //Verifica se alguma operação foi chamada
+        if(isset($dadosRecebidos["operacao"])) {
+
+            // Carrega a postagem a ser editada
+            if($dadosRecebidos["operacao"] == "edita") {
+
+                $sql = "select * from postagem where cod = :codigo";
+                unset($dadosRecebidos["operacao"]); // Tem que tirar a operação pro sql funcionar
+                self::$bd->executaSql($sql, $dadosRecebidos);
+
+                // Guarda a postagem a ser editada
+                $dadosDoTemplate["postagem"] = self::$bd->lerResultado(\Etec\Aula\Model\Postagem::class)[0];
+
+                // Apaga a postagem
+            } elseif($dadosRecebidos["operacao"] == "apaga") {
+                $sql = "delete from postagem where cod = :codigo";
+                unset($dadosRecebidos["operacao"]);  // Tem que tirar a operação pro sql funcionar
+                self::$bd->executaSql($sql, $dadosRecebidos);
+            }
+        }
+
+        // Depois de fazer todas as operações carrega todas as postagens
+        $sql = "select * from postagem";
+        self::$bd->executaSql($sql, []);
+        $dadosDoTemplate["postagens"] = self::$bd->lerResultado(\Etec\Aula\Model\Postagem::class);
+
+        // Fecha a conexão com o banco
+        self::$bd->fecharConexao();
+
         // Define o título da pagina
-        $dadosRecebidos["titulo"] = "Crie sua postagem";
+        $dadosDoTemplate["titulo"] = "Crie sua postagem";
 
         // Gera o texto da página que será enviado para navegador
-        echo self::$twig->render("admin_adicionarPostagem.html", $dadosRecebidos);
+        echo self::$twig->render("admin_adicionarPostagem.html", $dadosDoTemplate);
     }
 
     /**
@@ -90,7 +79,15 @@ class Admin
         \Etec\Aula\Lib\Sanitizer::sanitizeAll($dadosRecebidos);
 
         // Cria o comando sql
-        $sql = "insert into postagem (titulo, texto) values (:txtTitulo, :txtTexto)";
+        $sql = "";
+        if($dadosRecebidos["txtCodigo"] == "") {
+            unset($dadosRecebidos["txtCodigo"]);  // Tem que tirar o txtCodigo pro sql funcionar
+            $sql = "insert into postagem (titulo, texto) values (:txtTitulo, :txtTexto)";
+            $resultado["titulo"] = "Inserção de postagem";
+        } else {
+            $sql = "update postagem set titulo = :txtTitulo, texto = :txtTexto where cod = :txtCodigo";
+            $resultado["titulo"] = "Atualização de postagem";
+        }
 
         // Abre a conexão
         self::$bd->abrirConexao(BD_ENDERECO, BD_USUARIE, BD_SENHA);
@@ -106,10 +103,6 @@ class Admin
         }
 
         self::$bd->fecharConexao();
-
-        // Define o título padrão da pagina
-        // usando uma constante do Config.php
-        $resultado["titulo"] = "Sobre nós";
 
         // Gera o texto da página que será
         // enviado para navegador

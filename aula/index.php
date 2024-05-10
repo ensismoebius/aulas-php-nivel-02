@@ -34,6 +34,9 @@ $roteador->get("/postagens", "Principal:postagens");
 //////////////////////////////////////
 $roteador->group("admin");
 
+// Rota para o formulário de edição ou exclusão
+$roteador->get("/adicionarPostagem/{operacao}/{codigo}", "Admin:adicionarPostagem");
+
 // Rota para o formulário de adição de postagem
 $roteador->get("/adicionarPostagem", "Admin:adicionarPostagem");
 
@@ -43,12 +46,12 @@ $roteador->post("/salvarPostagem", "Admin:salvarPostagem");
 
 $roteador->dispatch();
 
-if ($roteador->error()) {
-    // Se o erro for um 404, redireciona para a página personalizada de erro 404
-    if ($roteador->error() == 404) {
-        $roteador->redirect("/erro/404");
-    } else {
-        // Aqui você pode redirecionar para outras páginas de erro conforme necessário
-        $roteador->redirect("/erro/{$roteador->error()}");
-    }
-}
+// if ($roteador->error()) {
+//     // Se o erro for um 404, redireciona para a página personalizada de erro 404
+//     if ($roteador->error() == 404) {
+//         $roteador->redirect("/erro/404");
+//     } else {
+//         // Aqui você pode redirecionar para outras páginas de erro conforme necessário
+//         $roteador->redirect("/erro/{$roteador->error()}");
+//     }
+// }

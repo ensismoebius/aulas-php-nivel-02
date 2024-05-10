@@ -3,17 +3,43 @@
 
 {% block estilosExtras %}
     {{ style('form.css') }}
+    {{ style('table.css') }}
 {% endblock %}
 
 {% block conteudo %}
 
-    <form action="salvarPostagem" method="post">
+    <form action="{{ url('admin/salvarPostagem') }}" method="post">
+        <input type="hidden" name="txtCodigo" value="{{ postagem.cod }}">
         <label for="txtTitulo">Título</label>
-        <input type="text" name="txtTitulo">
+        <input type="text" name="txtTitulo" value="{{ postagem.titulo }}">
         <br>
         <label for="txtTexto">Texto</label>
-        <textarea name="txtTexto" id="texto" cols="30" rows="10"></textarea>
+        <textarea name="txtTexto" id="texto" cols="30" rows="10">{{ postagem.texto }}</textarea>
         <input type="submit" value="Salvar">
     </form>
+
+    <table style="width: 100%;">
+        <thead>
+            <tr>
+                <td>Codigo</td>
+                <td>Titulo</td>
+                <td>Texto</td>
+                <td>Operações</td>
+            </tr>
+        </thead>
+        <tbody>
+            {% for p in postagens %}
+            <tr>
+                <td>{{ p.cod }}</td>
+                <td>{{ p.titulo | upper }}</td>
+                <td>{{ p.texto }}</td>
+                <td>
+                    {{ link('admin/adicionarPostagem/apaga/'~p.cod,'Deleta') }}
+                    {{ link('admin/adicionarPostagem/edita/'~p.cod,'Edita') }}
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
 
 {% endblock %}
