@@ -1,0 +1,42 @@
+/* General body and 404 container styles */
+body {
+    background-color: black;
+    color: white;
+    font-family: 'Arial', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.container-404 {
+    text-align: center;
+    padding: 20px;
+}
+
+.container-404 h1 {
+    font-size: 72px;
+    color: red;
+}
+
+.container-404 p {
+    font-size: 24px;
+}
+
+.home-link {
+    color: red;
+    font-size: 20px;
+    text-decoration: none;
+    border: 2px solid red;
+    padding: 10px 20px;
+    margin-top: 20px;
+    display: inline-block;
+    transition: color 0.3s, background-color 0.3s;
+}
+
+.home-link:hover, .home-link:focus {
+    background-color: red;
+    color: black;
+    text-decoration: none;
+}

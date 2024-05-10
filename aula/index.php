@@ -13,6 +13,9 @@ $roteador->namespace("Etec\Aula\Controller");
 ////////////////////////////////////////////////////
 $roteador->group(null);
 
+// Rota para erro
+$roteador->get("/erro/{numero}", "Principal:erro");
+
 // Rotas dinâmicas vem antes das estáticas
 $roteador->get("/{nome}", "Principal:paginaPrincipal");
 
@@ -24,6 +27,7 @@ $roteador->get("/sobre", "Principal:sobre");
 
 // Rota postagens
 $roteador->get("/postagens", "Principal:postagens");
+
 
 //////////////////////////////////////
 // Grupo admin: constante URL/admin //
@@ -37,5 +41,14 @@ $roteador->get("/adicionarPostagem", "Admin:adicionarPostagem");
 // Note que não é mais "get" e sim "post"
 $roteador->post("/salvarPostagem", "Admin:salvarPostagem");
 
-
 $roteador->dispatch();
+
+if ($roteador->error()) {
+    // Se o erro for um 404, redireciona para a página personalizada de erro 404
+    if ($roteador->error() == 404) {
+        $roteador->redirect("/erro/404");
+    } else {
+        // Aqui você pode redirecionar para outras páginas de erro conforme necessário
+        $roteador->redirect("/erro/{$roteador->error()}");
+    }
+}

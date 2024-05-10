@@ -121,4 +121,22 @@ class Principal
         // enviado para navegador
         echo self::$twig->render("main_postagens.html", $resultado);
     }
+    /**
+     * Página de erro
+     *
+     * @param array $dadosRecebidos
+     * @return void
+     */
+    public function erro(array $dadosRecebidos): void
+    {
+        // Define o título padrão da pagina
+        // usando uma constante do Config.php
+        $dadosRecebidos["titulo"] = "Erro";
+
+        // Gera o texto da página que será
+        // enviado para navegador
+        echo self::$twig->render("main_erro.html", $dadosRecebidos);
+    }
+
+
 }
