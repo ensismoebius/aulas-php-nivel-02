@@ -1,0 +1,64 @@
+/* Form Styling */
+form {
+    max-width: 600px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #222;
+    border: 2px solid red;
+    border-radius: 8px;
+}
+
+form label {
+    display: block;
+    margin-bottom: 8px;
+    font-size: 18px;
+    color: white;
+}
+
+form input, form textarea, form select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    background-color: #333;
+    border: 1px solid red;
+    color: white;
+    border-radius: 4px;
+}
+
+form input[type="text"],
+form input[type="email"],
+form input[type="password"] {
+    font-size: 16px;
+}
+
+form textarea {
+    resize: vertical; /* Allows vertical resizing, not horizontal */
+    height: 150px; /* Default height */
+}
+
+form select {
+    padding: 10px;
+    background-color: #333;
+    color: white;
+}
+
+form input[type="submit"], form button {
+    background-color: red;
+    color: black;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+form input[type="submit"]:hover, form button:hover {
+    background-color: #a00; /* Darker shade of red for hover state */
+}
+
+/* Focus Styles for Accessibility */
+form input:focus, form textarea:focus, form select:focus {
+    outline: none;
+    border-color: white;
+    box-shadow: 0 0 0 2px white;
+}

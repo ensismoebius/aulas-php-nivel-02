@@ -8,7 +8,7 @@ namespace Etec\Aula\Controller;
  * Aqui na classe principal agrupamos todas as páginas
  * principais: index, sobre, contato, etc.
  */
-class Principal
+class Admin
 {
     /**
      * Guarda o objeto responsável por juntar os dados
@@ -56,49 +56,41 @@ class Principal
     }
 
     /**
-     * Exibe a página principal
+     * Exibe formulário de criação de postagem
      *
      * @param array $dadosRecebidos Dados recebidos da url ou de um formulário
      * @return void
      */
-    public function paginaPrincipal(array $dadosRecebidos): void
+    public function adicionarPostagem(array $dadosRecebidos): void
     {
-        // Define o título padrão da pagina
-        // usando uma constante do Config.php
-        $dadosRecebidos["titulo"] = DEFAULT_TITLE;
+        // Define o título da pagina
+        $dadosRecebidos["titulo"] = "Crie sua postagem";
 
-        // Exemplo de dado recebido via GET
-        // Olhe a rota dinâmica no arquivo index.php
-        // ela coloca em dadosRecebidos["nome"]
-        // um nome caso seja acessada
-
-        // Gera o texto da página que será
-        // enviado para navegador
-        echo self::$twig->render("main_principal.html", $dadosRecebidos);
+        // Gera o texto da página que será enviado para navegador
+        echo self::$twig->render("admin_adicionarPostagem.html", $dadosRecebidos);
     }
 
     /**
-     * Exibe a página "sobre nós"
+     * Exibe a página de resultado para a criação de postagem
+     * Aqui os dados enviados via POST
+     * Chegam em dadosRecebidos porquê
+     * a rota assim disse que deveria ser.
      *
      * @param array $dadosRecebidos
      * @return void
      */
-    public function sobre(array $dadosRecebidos): void
+    public function salvarPostagem(array $dadosRecebidos): void
     {
-        // Define o título padrão da pagina
-        // usando uma constante do Config.php
-        $dadosRecebidos["titulo"] = "Sobre nós";
+        // Outro metodo criado pelo seu professor
+        // que ficou a madrugada acordado fazendo
+        // esse código esperando que seus alunos
+        // reconheçam seu esforço e entreguem um
+        // Tcc incrivel. A próposito esse método
+        // limpa as strings enviadas pelo formulário
+        \Etec\Aula\Lib\Sanitizer::sanitizeAll($dadosRecebidos);
 
-        // Gera o texto da página que será
-        // enviado para navegador
-        echo self::$twig->render("main_sobre.html", $dadosRecebidos);
-    }
-
-
-    public function postagens(array $dadosRecebidos): void
-    {
         // Cria o comando sql
-        $sql = "select * from postagem";
+        $sql = "insert into postagem (titulo, texto) values (:txtTitulo, :txtTexto)";
 
         // Abre a conexão
         self::$bd->abrirConexao(BD_ENDERECO, BD_USUARIE, BD_SENHA);
@@ -108,17 +100,19 @@ class Principal
 
         // Gera a mensagem de status
         if ($sucesso) {
-            $resultado["postagens"] = self::$bd->lerResultado(\Etec\Aula\Model\Postagem::class);
+            $resultado["status"] = "Postagem salva com sucesso";
+        } else {
+            $resultado["status"] = "Falha ao salvar postagem";
         }
 
         self::$bd->fecharConexao();
 
         // Define o título padrão da pagina
         // usando uma constante do Config.php
-        $resultado["titulo"] = "Lista de postagens";
+        $resultado["titulo"] = "Sobre nós";
 
         // Gera o texto da página que será
         // enviado para navegador
-        echo self::$twig->render("main_postagens.html", $resultado);
+        echo self::$twig->render("admin_salvarPostagem.html", $resultado);
     }
 }

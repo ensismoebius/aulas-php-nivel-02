@@ -1,0 +1,19 @@
+{% extends "layout.html" %}
+
+
+{% block estilosExtras %}
+    {{ style('form.css') }}
+{% endblock %}
+
+{% block conteudo %}
+
+    <form action="salvarPostagem" method="post">
+        <label for="txtTitulo">Título</label>
+        <input type="text" name="txtTitulo">
+        <br>
+        <label for="txtTexto">Texto</label>
+        <textarea name="txtTexto" id="texto" cols="30" rows="10"></textarea>
+        <input type="submit" value="Salvar">
+    </form>
+
+{% endblock %}

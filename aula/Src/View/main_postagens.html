@@ -1,0 +1,26 @@
+{% extends "layout.html" %}
+
+{% block estilosExtras %}
+    {{ style('table.css') }}
+{% endblock %}
+
+{% block conteudo %}
+<table style="width: 80%;">
+    <thead>
+        <tr>
+            <td>Codigo</td>
+            <td>Titulo</td>
+            <td>Texto</td>
+        </tr>
+    </thead>
+    <tbody>
+        {% for p in postagens %}
+        <tr>
+            <td>{{ p.cod }}</td>
+            <td>{{ p.titulo | upper }}</td>
+            <td>{{ p.texto }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

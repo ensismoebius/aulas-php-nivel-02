@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+    <head>
+		{% block estilosExtras %}
+		{% endblock %}
+		
+		{% block scriptsExtras %}
+		{% endblock %}
+		
+		<!-- Carrega os estilos padrão -->
+        {{ style('style.css') }}
+		<!-- Carrega os scripts padrão (descomente para usar) -->
+        <!-- {{ script('aviso.js') }} -->
+        
+		<meta charset='utf-8'>
+        <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+        <title>{{titulo}}</title>
+        <meta name='viewport' content='width=device-width, initial-scale=1'>
+    </head>
+    <body>
+		<header>
+		<nav aria-label="Main navigation">
+			<ul>
+			  <li><a href="/aula">Principal</a></li>
+			  <li><a href="/aula/sobre">Sobre</a></li>
+			  <li><a href="/aula/postagens">Postagens</a></li>
+			  <li><a href="/aula/Bakunin">Um cara legal</a></li>
+			  <li><a href="/aula/admin/adicionarPostagem">Adicionar postagem</a></li>
+			</ul>
+		  </nav>
+		</header>
+		<main>
+		{% block conteudo %}
+		{% endblock %}
+		</main>
+	</body>
+</html>

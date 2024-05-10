@@ -1,0 +1,37 @@
+/* Table Styling */
+table {
+    width: 100%;
+    border-collapse: collapse; /* Ensures borders between cells are shared */
+    margin: 20px 0;
+    background-color: #222; /* Dark background for contrast */
+}
+
+th, td {
+    border: 1px solid red; /* Red borders for cells */
+    padding: 12px 15px; /* Spacing inside cells */
+    color: white; /* Text color */
+    text-align: left; /* Aligning text to the left, can be adjusted if needed */
+}
+
+th {
+    background-color: red; /* Red background for header cells */
+    color: black; /* Black text for contrast */
+    font-size: 18px;
+}
+
+tbody tr:nth-child(odd) {
+    background-color: #333; /* Slightly lighter row for zebra striping */
+}
+
+tbody tr:hover {
+    background-color: #444; /* Darker on hover for better interaction feedback */
+}
+
+caption {
+    padding: 10px;
+    color: white;
+    font-size: 20px;
+    text-align: center;
+    background-color: red;
+    margin-bottom: 5px; /* Space between caption and table */
+}
